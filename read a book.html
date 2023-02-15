@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Read a Book</title>
+    <style>
+      body {
+        background-color: #F5ECEC; /* light pink background */
+        font-family: "Helvetica Neue", sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+  h1 {
+    font-size: 5em;
+    color: #3E4149; /* dark blue-grey text color */
+    margin-top: 15%; /* center the text vertically */
+    animation: float 6s ease-in-out infinite; /* subtle float animation */
+  }
+
+  p {
+    font-size: 2em;
+    color: #616161; /* grey text color */
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  #subtitle {
+    border-right: 2px solid #616161; /* blinking cursor effect */
+    margin-right: 10px; /* spacing between subtitle and cursor */
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    /* reduce font size for smaller screens */
+    h1 {
+      font-size: 4em;
+    }
+    
+    p {
+      font-size: 1.5em;
+    }
+  }
+</style>
+
+  </head>
+  <body>
+    <h1>Read a Book</h1>
+    <p><span id="subtitle"></span></p>
+
+<script>
+  const messages = [
+    "Get lost in a good story.",
+    "Learn something new and interesting.",
+    "Explore different worlds and perspectives.",
+    "Immerse yourself in another time and place.",
+    "Escape from reality and relax your mind.",
+    "Unwind and destress with a good book.",
+    "Get inspired by the power of words.",
+    "Experience the joy of reading for pleasure.",
+    "Challenge your mind and expand your knowledge."
+  ];
+
+  const subtitle = document.getElementById("subtitle");
+  const message = messages[Math.floor(Math.random() * messages.length)];
+
+  let i = 0;
+
+  function typeSubtitle() {
+    if (i < message.length) {
+      subtitle.textContent += message.charAt(i);
+      i++;
+      setTimeout(typeSubtitle, 60); // Adjust the typing speed by changing the timeout value (in milliseconds)
+    } else {
+      // Remove the blinking cursor effect from the subtitle once the animation is finished
+      subtitle.style.borderRight = "none";
+    }
+  }
+
+
+  typeSubtitle();
+</script>
+
+  </body>
+</html>

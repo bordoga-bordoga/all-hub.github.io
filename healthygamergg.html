@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Visit HealthyGamerGG</title>
+    <style>
+      body {
+        background-color: #fff4e6; /* soft peach background */
+        font-family: "Lucida Handwriting", cursive;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      
+      h1 {
+        font-size: 6em;
+        color: #ff6666; /* romantic red text color */
+        margin-top: 15%; /* center the text vertically */
+        animation: float 6s ease-in-out infinite; /* subtle float animation */
+      }
+      
+      p {
+        font-size: 2em;
+        color: #cc99ff; /* soft purple text color */
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+
+      #subtitle {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 700px;
+        white-space: pre-wrap; /* add this property to make the subtitle wrap around */
+        }
+
+      a {
+        display: block;
+        font-size: 1.5em;
+        color: #ffcc66; /* golden yellow text color */
+        text-decoration: none;
+        border: 2px solid #ffcc66; /* golden yellow border */
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 200px;
+        margin: auto;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      a:hover {
+        background-color: #ffcc66; /* golden yellow background */
+        color: #fff4e6; /* soft peach text color */
+      }
+      
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        /* reduce font size for smaller screens */
+        h1 {
+          font-size: 6em;
+        }
+        
+        p {
+          font-size: 1.5em;
+        }
+
+        a {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Visit HealthyGamerGG!</h1>
+    <p id="message"><span id="subtitle"></span></p>
+    <a href="https://coaching.healthygamer.gg/guide/index" class="button">Visit Now</a>
+
+    <script>
+      // Define an array of possible messages
+      const messages = [
+        "Explore attention, focus, and follow-through in the Guide to ADHD & Doing Stuff.",
+        "Take control of your mental wellness and master the art of planning and seeing your goals through to completion.",
+        "Gain insight into the neuroscience of thought, behavior, and ADHD.",
+        "Explore attention, focus, and follow-through for a stronger state of mind.",
+        "Master the art of planning and seeing your goals through to completion.",
+        "Examine the clinical and nonclinical sides of ADHD.",
+        "Gain insight into the neuroscience of thought, behavior, and ADHD management.",
+        "Find out how to productively leverage aspects of attention and focus."
+      ];
+
+      const subtitle = document.getElementById("subtitle");
+      const message = messages[Math.floor(Math.random() * messages.length)];
+
+
+      let i = 0;
+
+      function typeSubtitle() {
+        if (i < message.length) {
+          subtitle.textContent += message.charAt(i);
+          i++;
+          setTimeout(typeSubtitle, 60); // Adjust the typing speed by changing the timeout value (in milliseconds)
+        } else {
+          // Remove the blinking cursor effect from the subtitle once the animation is finished
+          subtitle.style.borderRight = "none";
+        }
+      }
+
+
+      typeSubtitle();
+    </script>
+  </body>
+</html>

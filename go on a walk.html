@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Go for a Walk</title>
+    <style>
+      body {
+        background-color: #f5f5dc; /* soft ivory background */
+        font-family: "Georgia", serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 8em;
+        color: #db7093; /* romantic pink text color */
+        margin-top: 15%; /* center the text vertically */
+        animation: float 6s ease-in-out infinite; /* subtle float animation */
+      }
+
+      p {
+        font-size: 2em;
+        color: #6495ed; /* soft blue text color */
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+
+      #subtitle {
+        border-right: 2px solid #6495ed; /* blinking cursor effect */
+        margin-right: 10px; /* spacing between subtitle and cursor */
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        /* reduce font size for smaller screens */
+        h1 {
+          font-size: 6em;
+        }
+        
+        p {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Go for a Walk</h1>
+    <p><span id="subtitle"></span></p>
+
+    <script>
+      const messages = [
+        "Breathe in the fresh air and feel alive.",
+        "Let the beauty around you fill your heart with joy.",
+        "Savor the moment and all the little things.",
+        "Feel the sunshine on your face and smile.",
+        "Take a leisurely walk and enjoy the scenery.",
+        "Breathe in the fresh air and let your worries go.",
+        "Take a break and let your mind unwind.",
+        "Stretch your legs and clear your head.",
+        "Discover the beauty of the world around you.",
+        "Find calm and serenity on a peaceful stroll.",
+        "Step outside and let nature be your guide.",
+        "Take a romantic stroll and clear your mind."
+      ];
+
+      const subtitle = document.getElementById("subtitle");
+      const message = messages[Math.floor(Math.random() * messages.length)];
+
+      let i = 0;
+
+      function typeSubtitle() {
+        if (i < message.length) {
+          subtitle.textContent += message.charAt(i);
+          i++;
+          setTimeout(typeSubtitle, 60); // Adjust the typing speed by changing the timeout value (in milliseconds)
+        } else {
+          // Remove the blinking cursor effect from the subtitle once the animation is finished
+          subtitle.style.borderRight = "none";
+        }
+      }
+
+
+      typeSubtitle();
+    </script>
+  </body>
+</html>
