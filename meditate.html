@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Relax for 2 Minutes</title>
+    <style>
+        body {
+        background: linear-gradient(180deg, #f5d6ba 0%, #efb2a2 100%);
+        font-family: "Helvetica Neue", sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-size: 100vh 100vh;
+        }
+      h1 {
+        font-size: 8em;
+        color: #66462f;
+        margin-top: 15%;
+      }
+      p {
+        font-size: 2.2em;
+        color: #8d5a3f;
+        margin: 20px 0 50px;
+      }
+      #timer {
+        font-size: 4em;
+        margin-top: 20px;
+        color: #66462f;
+        border: 4px solid #646360;
+        width: 190px;
+        padding: 12px;
+        border-radius: 40px;
+        position: absolute; 
+        top: 62%;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+        background-color:rgba(240, 248, 255, 0.25);
+      }
+      #subtitle {
+        border-right: 2px solid #646360;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 6em;
+        }
+        p {
+          font-size: 1.5em;
+        }
+        #timer {
+          font-size: 3em;
+        }
+      }
+      
+      * {
+        caret-color: #8d5a3f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Relax for 2 Minutes</h1>
+    <div id="container" style="text-align: center;">
+      <p><span id="subtitle"></span></p>
+      <div id="timer"></div>
+    </div>
+    <script>
+      const messages = [
+        "Take a deep breath and release all your tension.",
+        "Close your eyes and focus on the present moment.",
+        "Let your thoughts drift away and just be.",
+        "Allow yourself to feel calm and peaceful.",
+        "Embrace the stillness and find inner tranquility.",
+        "Surrender to the quiet and let your mind rest.",
+        "Relax your body and let go of any stress.",
+        "Visualize a serene scene and transport yourself there.",
+        "Feel the weight of the world lift off your shoulders.",
+        "Sink into a state of deep relaxation and peace.",
+        "Let go of everything and just breathe.",
+        "Allow yourself to be completely at ease."
+      ];
+      const subtitle = document.getElementById("subtitle");
+      const message = messages[Math.floor(Math.random() * messages.length)];
+      let i = 0;
+      const typeSubtitle = () => {
+        if (i < message.length) {
+          subtitle.textContent += message.charAt(i);
+          i++;
+          setTimeout(typeSubtitle, 60);
+        } else {
+          subtitle.style.borderRight = "none";
+        }
+      };
+      const container = document.getElementById("container");
+      let seconds = 120;
+      let startTime = Date.now();
+      const countdown = () => {
+        const elapsedTime = Date.now() - startTime;
+        const remainingSeconds = Math.max(Math.floor((seconds * 1000 - elapsedTime) / 1000), 0);
+        if (remainingSeconds > 0) {
+          timer.textContent = `${Math.floor(remainingSeconds / 60).toString().padStart(2, '0')}:${(remainingSeconds % 60).toString().padStart(2, '0')}`;
+          requestAnimationFrame(countdown);
+        } else {
+          timer.textContent = "0:00";
+        }
+      };
+      timer.style.color = "#8d5a3f";
+      window.addEventListener("click", () => {
+        seconds = 120;
+        startTime = Date.now();
+      });
+      document.addEventListener("mousemove", function(event) {
+        seconds = 120;
+        startTime = Date.now();
+      });
+      countdown();
+      typeSubtitle();
+    </script>
+  </body>
+</html>
